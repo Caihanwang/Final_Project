@@ -246,7 +246,7 @@ def original_window(enter):
         elif (float(entry.get())>150.0):
             tk.messagebox.showerror('*_*','BMI is too large')
         else:
-            tk.messagebox.showinfo('^_^','correct input value')
+            tk.messagebox.showinfo('^_^','correct input value, calculating')
             new_window(enter_w, float(entry.get()), float(entry_1.get()), n3.get(), hyper[n4.get()],\
                 heart[n5.get()], m[n6.get()], w[n7.get()], re[n8.get()], smoke[n9.get()], float(entry_2.get()))
 
