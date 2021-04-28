@@ -451,12 +451,93 @@ fig.text(0.65, 0.2, '{}%'.format(healthy_female), {'font':'Serif', 'size':20,'we
 fig.text(0.21, 0.78, 'Male ({}%)'.format(male_per), {'font':'Serif', 'size':14,'weight':'bold' ,'color':'black'},alpha = 0.3,)
 fig.text(0.61, 0.78, 'Female({}%)'.format(female_per), {'font':'Serif', 'size':14,'weight':'bold', 'color':'black'}, alpha = 0.3)
 
-
+# Generate the legend for the graph
 fig.text(0.7,0.73, 'Stroke ', {'font': 'Serif','weight':'bold','Size': '13','weight':'bold','style':'normal', 'color':'#343bfe'})
 fig.text(0.82,0.73, '|', {'color':'black' , 'size':'13', 'weight': 'bold'})
 fig.text(0.835,0.73, 'No Stroke', {'font': 'Serif','weight':'bold', 'Size': '13','style':'normal', 'weight':'bold','color':'#e6a129'},alpha = 1)
 
 plt.tight_layout()
 plt.savefig("Gender Risk")
+
+
+
+
+'''Generate Hypertention risk plot for heart stroke'''
+stroke_hyper = dat[dat['stroke'] == 1]['hypertension'].value_counts()
+healthy_hyper = dat[dat['stroke'] == 0]['hypertension'].value_counts()
+
+#Get the numbers of people who is with hypertension
+n = dat['hypertension'].value_counts().values[0]
+y =  dat['hypertension'].value_counts().values[1]
+
+
+stroke_no = int(round (stroke_hyper.values[0] / n * 100, 0))
+stroke_yes = int(round( stroke_hyper.values[1] / y *100, 0))
+healthy_no = int(round(healthy_hyper.values[0] / n * 100, 0))
+healthy_yes = int(round(healthy_hyper.values[1] / y *100, 0))
+
+no_per = int(round(n/(n+y) * 100, 0))
+yes_per = int(round(y/(n+y)* 100, 0))
+
+
+fig = plt.figure(FigureClass = Waffle, 
+                 constrained_layout = True,
+                 figsize = (7,7),
+                 facecolor = '#f6f5f5',dpi = 100,
+                 
+                 plots = {'121':
+                          {     
+                           'rows':7,
+                           'columns': 7,
+                           'values' : [stroke_yes,healthy_yes],
+                            'colors' : ['#343bfe','#e6a129'],
+                              'vertical' : True,
+                              'interval_ratio_x': 0.005,
+                              'interval_ratio_y': 0.005,
+                              'icons' : 'heartbeat',
+                              'icon_legend': False,
+                              'icon_size':20,
+                              'plot_anchor':'C',
+                              'alpha':1,
+                              'starting_location': 'NE'
+                          },
+                          '122' :
+                          { 
+                            'rows': 7,
+                            'columns':7,
+                            'values':[stroke_no,healthy_no],         
+                              'colors' : ['#343bfe','#e6a129'],
+                              'vertical': True,
+                              'interval_ratio_x': 0.005,
+                              'interval_ratio_y':0.005,
+                              'icons' : 'heartbeat',
+                              'icon_legend' :False,
+                              'icon_size':20,
+                              'plot_anchor':'C',
+                              'alpha':1,
+                              'starting_location': 'NE'
+                                                      
+                           }
+                         },
+                   
+)
+
+#Generate the graph for people with stroke and without stroke in both hypertention status and save the graph
+fig.text(0., 0.85, 'Hypertension Risk and Heart Stroke', {'font':'Serif', 'size':20, 'color':'black', 'weight':'bold'})
+fig.text(0.05, 0.73, 'People who have hypertention are more likely to get heart stroke, \nIt is about 3 times larger that people with \nhypertention having strokes than people \nwithout hypertention.', {'font':'Serif', 'size':13, 'color':'black', 'weight':'normal'},alpha = 0.8)
+fig.text(0.24, 0.22, 'ooo', {'font':'Serif', 'size':16,'weight':'bold' ,'color':'#f6f5f5'})
+fig.text(0.65, 0.22, 'ooo', {'font':'Serif', 'size':16,'weight':'bold', 'color':'#f6f5f5'})
+fig.text(0.23, 0.28, '{}%'.format(healthy_yes), {'font':'Serif', 'size':20,'weight':'bold' ,'color':'#e6a129'},alpha = 1,)
+fig.text(0.63, 0.28, '{}%'.format(healthy_no), {'font':'Serif', 'size':20,'weight':'bold', 'color':'#e6a129'}, alpha = 1)
+fig.text(0.1, 0.68, 'Have Hypertension ({}%)'.format(yes_per), {'font':'Serif', 'size':14,'weight':'bold' ,'color':'black'},alpha = 0.7,)
+fig.text(0.55, 0.68, "Don't have Hypertension({}%)".format(no_per), {'font':'Serif', 'size':14,'weight':'bold', 'color':'black'}, alpha = 0.7)
+
+# Generate the legend in the graph
+fig.text(0.60,0.75, 'Stroke ', {'font': 'Serif','weight':'bold','Size': '15','weight':'bold','style':'normal', 'color':'#343bfe'})
+fig.text(0.72,0.75, '|', {'color':'black' , 'size':'15', 'weight': 'bold'})
+fig.text(0.74,0.75, 'No Stroke', {'font': 'Serif','weight':'bold', 'Size': '15','style':'normal', 'weight':'bold','color':'#e6a129'},alpha = 1)
+
+
+plt.savefig("Hypertention Risk")
 
 
