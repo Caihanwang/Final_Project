@@ -52,6 +52,12 @@ This graph above is about the Association between gender and heart stroke. From 
 
 <br>
 
+![Hypertention Risk.png](https://i.loli.net/2021/04/28/hcGIHfy2bnLJVFZ.png)
+
+This graph above is about the association between Hypertension Risk and Heart Stroke. From the graph we conclude people who have hypertention are more likely to get heart stroke, It is about 3 times larger that people with hypertention having strokes than people without hypertention.
+
+<br>
+
 
 
 ### Model Selection and Function
