@@ -24,11 +24,15 @@ In this part of project, we will first load our dataset "healthcare-dataset-stro
 
 ![Percentage.png](https://i.loli.net/2021/04/28/36VBHXQvLlUYMJG.png)
 
-The first graph is about the percentage of people have strokes and people do not have strokes. From the graph, we can easily see that it is a significantly unbalanced distribution, and clearly we see that 5 percent of people from dataset are likely to get heart strokes.
+The first graph above is about the percentage of people have strokes and people do not have strokes. From the graph, we can easily see that it is a significantly unbalanced distribution, and clearly we see that 5 percent of people from dataset are likely to get heart strokes.
 
 ![Heart stroke and age.png](https://i.loli.net/2021/04/28/IKgXA9T5mF2i7Pl.png)
 
 The second graph above is about Relationship between Heart Strokes and Age. From the graph we can conclude that Age have significant association with stokes, older people have larger probability of getting strokes while the mid age adults are the second higest.
+
+![Heart stroke and glutose.png](https://i.loli.net/2021/04/28/VoSKzRcDmWveY4j.png)
+
+The third graph above is about Assocaition between Heart Strokes and Glucose. From the graph, we conclude that Glucose level does not have significant association with heart strokes.
 
 <br>  
 
