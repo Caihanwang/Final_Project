@@ -34,11 +34,10 @@ At last, we created a function named 'Predict'. The input value should be a list
 The stroke prediction user-interface has three windows:
 <br>
 1. Initial-introduction window
-<br>
 2. Main window (includes input boxes)
-<br>
 3. Result window
-<br>
+
+
 Initial-introduction window includes basic information of this tool and disclaimer.
 
 
