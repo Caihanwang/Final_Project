@@ -282,3 +282,103 @@ fig.text(0.2,0.03,'Assocaition between Heart Strokes and Glucose',{'font':'Serif
 plt.tight_layout()
 plt.savefig("Heart stroke and glutose")
 
+
+
+
+
+'''plot the Heart stoke and weight graph'''
+fig = plt.figure(figsize = (24,10),dpi = 60)
+
+gs = fig.add_gridspec(10,24)
+gs.update(wspace = 1, hspace = 0.05)
+
+
+ax2 = fig.add_subplot(gs[1:4,0:8]) 
+ax3 = fig.add_subplot(gs[6:9, 0:8]) 
+ax1 = fig.add_subplot(gs[2:9,13:]) 
+
+# setting up axes list
+axes = [ax1,ax2, ax3]
+
+
+# setting of axes
+for ax in axes:
+    ax.axes.get_yaxis().set_visible(False)
+    ax.set_facecolor('#f6f5f5')
+    
+    for loc in ['left', 'right', 'top', 'bottom']:
+        ax.spines[loc].set_visible(False)
+
+fig.patch.set_facecolor('#f6f5f5')
+        
+ax1.axes.get_xaxis().set_visible(False)
+ax1.axes.get_yaxis().set_visible(True)
+ax1.set_xlim(xmin = -250,xmax = 2000)
+ax1.set_ylim(ymin = -1,ymax =3.5)
+
+
+# plot of stoke and healthy people
+
+stroke_bmi = dat[dat['stroke'] == 1].bmi_cat.value_counts()
+healthy_bmi = dat[dat['stroke'] == 0].bmi_cat.value_counts()
+
+ax1.hlines(y = ['Obesity', 'Overweight', 'Ideal', 'Underweight'], xmin = [96,115,37,1], 
+          xmax = [1797,1495,1159,410], color = 'grey',**{'linewidth':0.5})
+
+
+sns.scatterplot(y = stroke_bmi.index, x = stroke_bmi.values, s = stroke_bmi.values*2, color = '#343bfe', ax= ax1, alpha = 1)
+sns.scatterplot(y = healthy_bmi.index, x = healthy_bmi.values, s = healthy_bmi.values*2, color = '#e6a129', ax= ax1, alpha = 1)
+
+ax1.set_yticklabels( labels = ['Obesity', 'Overweight', 'Ideal', 'Underweight'],fontdict = {'font':'Serif', 'fontsize':16,'fontweight':'bold', 'color':'black'})
+
+
+ax1.text(-750,-1.5, 'How BMI Impact on Heart Strokes' ,{'font': 'Serif', 'Size': '25','weight':'bold', 'color':'black'})
+ax1.text(1000,-1., 'Stroke ', {'font': 'Serif','weight':'bold','Size': '16','weight':'bold','style':'normal', 'color':'#343bfe'})
+ax1.text(1250,-1, '|', {'color':'black' , 'size':'16', 'weight': 'bold'})
+ax1.text(1300,-1, 'Healthy', {'font': 'Serif','weight':'bold', 'Size': '16','style':'normal', 'weight':'bold','color':'#e6a129'})
+ax1.text(-750,-0.8, 'People with obesity and overweight people are more likely to getting heart strokes', 
+        {'font':'Serif', 'size':'16','color': 'black'})
+
+
+
+ax1.text(stroke_bmi.values[0] + 20 , 0.98, stroke_bmi.values[0], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#343bfe'})
+ax1.text(healthy_bmi.values[1] - 275 ,0.98, healthy_bmi.values[1], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#e6a129'})
+
+ax1.text(stroke_bmi.values[1] + 30,0, stroke_bmi.values[1], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#343bfe'})
+ax1.text(healthy_bmi.values[0] - 300,0, healthy_bmi.values[0], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#e6a129'})
+
+
+# plot distribution plots 
+
+sns.kdeplot(data = dat, x = 'bmi', ax = ax2, shade = True, color = '#c76a48', alpha = 1, )
+ax2.set_xlabel('Body mass index of a person', fontdict = {'font':'Serif', 'color': 'black', 'size': 16,'weight':'bold' })
+ax2.text(-17,0.085,'BMI Distribution', {'font':'Serif', 'color': 'black','weight':'bold','size':24})
+ax2.text(-17,0.075, 'Most people have relatively similar BMI, the distribution follows a normal distribution', 
+        {'font':'Serif', 'size':'16','color': 'black'})
+ax2.text(80,0.06, 'Total',{'font':'Serif', 'size':'14','color': '#c76a48','weight':'bold'})
+ax2.text(92,0.06, '=',{'font':'Serif', 'size':'14','color': 'black','weight':'bold'})
+ax2.text(97,0.06, 'Stroke',{'font':'Serif', 'size':'14','color': '#343bfe','weight':'bold'})
+ax2.text(113,0.06, '+',{'font':'Serif', 'size':'14','color': 'black','weight':'bold'})
+ax2.text(117,0.06, 'Healthy',{'font':'Serif', 'size':'14','color': '#e6a129','weight':'bold'})
+
+
+# distribution plots adding the legends and comments to the graph and save the graph
+
+
+sns.kdeplot(data = dat[dat['stroke'] == 0], x = 'bmi',ax = ax3, shade = True,  alpha = 1, color = '#e6a129' )
+sns.kdeplot(data = dat[dat['stroke'] == 1], x = 'bmi',ax = ax3, shade = True,  alpha = 0.8, color = '#343bfe')
+
+ax3.set_xlabel('Body mass index of a person', fontdict = {'font':'Serif', 'color': 'black', 'weight':'bold','size': 16})
+
+ax3.text(-15,0.10,'Stroke-BMI Distribution', {'font':'Serif', 'weight':'bold','color': 'black', 'size':24})
+ax3.text(-15,0.9,'We see that Higher BMI has higher probability of getting stroke.', {'font':'Serif', 'color': 'black', 'size':16})
+ax3.text(80,0.08, 'Stroke ', {'font': 'Serif','weight':'bold','Size': '16','weight':'bold','style':'normal', 'color':'#343bfe'})
+ax3.text(95,0.08, '|', {'color':'black' , 'size':'16', 'weight': 'bold'})
+ax3.text(97,0.08, 'Healthy', {'font': 'Serif','weight':'bold', 'Size': '16','style':'normal', 'weight':'bold','color':'#e6a129'})
+
+fig.text(0.25,0.925,'Association between Heart Strokes and Weight',{'font':'Serif', 'weight':'bold','color': 'black', 'size':35})
+
+plt.savefig("Heart stroke and weight")
+
+
+
