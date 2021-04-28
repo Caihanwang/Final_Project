@@ -68,8 +68,11 @@ The last graph above is about the association between Heart disease and Heart St
 
 ### Model Selection and Function
 Firstly, we read and cleaned the data by removing all NA in BMI. In order to fit the model, we converted all the strings like ['Yes', 'No'] to [1, 0] and created dummy variables to form a new table.  
+
 Secondly, for data preprocessiong, we found that the cleaned data are extremely unbalanced, because 4700 people were not stroke but 209 people were stroke in the data. If we use this data to fit the models, models will be extremely skewed to the 'Not Stroke'. Therefore, to get an accurate prediction model, we chose to decrease the sample size to a balanced one by randomly select 209 people from people who are not stroke. After that, our data was formed by 209 people who were stroke and 209 people who were not stroke. Then, we splitted the data to test data and train data.  
+
 Thirdly, we imported model functions from sklearn, and chose to fit 3 models, including logistic regression model, random forest and decision tree. To diagnose models, we also created a funtion named 'generate_model_report'. After fitting, we could see that for logistic regression, the accuracy was 0.80 and the F1 score was 0.80. For random forest, the accuracy was 0.76 and the F1 score was 0.76. For decision treee, the accuracy was 0.71 and the F1 score was 0.72. Since logistic regression had the highest accuracy score and F1 score, so we chose to use Logistic Regression model and saved it as 'Model1.pkl'.  
+
 At last, we created a function named 'Predict'. The input value should be a list including the patient's gender, age, hypertension, heart_disease, ever_married, work_type, Residence_type, avg_glucose_level, bmi and smorking_status. We imported 'Model1.pkl' in the function to predict the stroke status.  
 <br>
 
