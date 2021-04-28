@@ -1,3 +1,6 @@
+from sklearn.linear_model import LogisticRegression
+import pandas as pd
+import numpy as np
 import matplotlib.pyplot as plt
 import seaborn as sns
 import tkinter as tk
@@ -100,7 +103,7 @@ def initial_window():
     
     We will not store your personal information, and we only use your personal information to do stroke prediction.
 
-    The accurate rate of this prediction is around 91.1%, we are not garanted the prediction is true.
+    The accurate rate of this prediction is around 75%, we are not garanted the prediction is true.
     
     If you would like to quit, please click the upper close button. 
     
@@ -268,13 +271,13 @@ def new_window(enter_w, bmi, gluco, gender, hyper, heart, marr, work, resid, smo
     # work_type, Residence_type, avg_glucose_level, bmi, smorking_status]
     a = Predict(patient)
     
-    Lab = tk.Label(window_one,text=f"""The prediction result is :
+    Lab = tk.Label(window_one,text=f'''The prediction result is :
     
     {a}
 
     Prediction result is for reference only
 
-    Return to main window could start a new test""",compound = tk.CENTER)
+    Return to main window could start a new test''', compound = tk.CENTER)
     Lab.place(x=100,y=50)
     Lab.pack()
 initial_window()
