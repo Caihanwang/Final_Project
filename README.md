@@ -47,7 +47,6 @@ Initial-introduction window includes basic information of this tool and disclaim
 In the main window, we have many selection bars and input value boxes. Users could select the most accurate options that described their status. Also, we have set the valid range of three numeric input values:
 <br>
 1. Age: [0, 100]
-<br>
 2. Glucose_average_level:[20, 300]
 <br>
 3. BMI: (0,150]
