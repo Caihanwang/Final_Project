@@ -7,7 +7,7 @@ matplotlib.use('Agg')
 from PIL import ImageTk,Image 
 import pandas as pd
 import joblib
-Model2 = joblib.load('Model2.pkl')
+Model1 = joblib.load('Model1.pkl')
 
 
 def Predict(ThePatient):
@@ -72,7 +72,7 @@ def Predict(ThePatient):
 
 
     #Model predict
-    y = Model2.predict(ds)
+    y = Model1.predict(ds)
 
     #Output
     if y == [1]:
