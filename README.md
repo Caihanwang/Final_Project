@@ -58,6 +58,12 @@ This graph above is about the association between Hypertension Risk and Heart St
 
 <br>
 
+![Heart disease risk.png](https://i.loli.net/2021/04/28/2EedG9UAnmatc54.png)
+
+The last graph above is about the association between Heart disease and Heart Stroke. By looking at the graph we conclude that association between Heart disease and Heart Stroke is significant.
+
+<br>
+
 
 
 ### Model Selection and Function
