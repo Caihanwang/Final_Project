@@ -1,4 +1,4 @@
-# Stroke Prediction
+# Stroke Prediction (You could Find Final Version in Master Branch)
 Team member: Caihan Wang, Yifeng Tang, Jiajie Shen. 
 
 ## Description
