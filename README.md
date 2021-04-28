@@ -46,6 +46,12 @@ This graph above is about Association between Heart Strokes and Weight. And from
 
 <br>  
 
+![Gender Risk.png](https://i.loli.net/2021/04/28/XkjvLVFbW2Q54Tu.png)
+
+This graph above is about the Association between gender and heart stroke. From the graph we conclude Risk rate of getting heart stroke in both gender are same, men and women have the equal probability of getting heart stroke
+
+<br>
+
 
 
 ### Model Selection and Function
