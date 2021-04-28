@@ -1,6 +1,6 @@
 import pandas as pd
 import joblib
-Model2 = joblib.load('Model2.pkl')
+Model1 = joblib.load('Model1.pkl')
 
 def Predict(ThePatient):
     # ThePatient = [gender, age, hypertension, heart_disease, ever_married, work_type, Residence_type, avg_glucose_level, bmi, smorking_status]
@@ -64,7 +64,7 @@ def Predict(ThePatient):
 
 
     #Model predict
-    y = Model2.predict(ds)
+    y = Model1.predict(ds)
 
     #Output
     if y == [1]:
