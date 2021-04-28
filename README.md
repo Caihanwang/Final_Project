@@ -21,6 +21,11 @@ We used "healthcare-dataset-stroke-data.csv", which cited from Kaggle. We used t
 
 In this part of project, we will first load our dataset "healthcare-dataset-stroke-data.csv" by using pandas. Then we will do some data visualization upon some variables in order to see the assocaition between variables and heart stroke. I have generated 7 plots which are the Percentage plot, hypertension risk, heart disease risk, heart stroke and age, heart stroke and weight, gender risk, heart stroke and glutose. 
 
+
+![Percentage.png](https://i.loli.net/2021/04/28/36VBHXQvLlUYMJG.png)
+
+The first graph is about the percentage of people have strokes and people do not have strokes. From the graph, we can easily see that it is a significantly unbalanced distribution, and clearly we see that 5 percent of people from dataset are likely to get heart strokes.
+
 <br>  
 
 
