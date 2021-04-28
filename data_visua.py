@@ -541,3 +541,87 @@ fig.text(0.74,0.75, 'No Stroke', {'font': 'Serif','weight':'bold', 'Size': '15',
 plt.savefig("Hypertention Risk")
 
 
+
+
+
+
+
+
+'''Heart disease and stroke'''
+stroke_hyper = dat[dat['stroke'] == 1]['heart_disease'].value_counts()
+healthy_hyper = dat[dat['stroke'] == 0]['heart_disease'].value_counts()
+
+#get the numbers of people with heart disease
+no = dat['heart_disease'].value_counts().values[0]
+yes =  dat['heart_disease'].value_counts().values[1]
+
+#find the number of stroke and healthy people from both people with heart disease and without heart disease
+stroke_no = int(round (stroke_hyper.values[0] / no * 100, 0))
+stroke_yes = int(round( stroke_hyper.values[1] / yes *100, 0))
+healthy_no = int(round(healthy_hyper.values[0] / no * 100, 0))
+healthy_yes = int(round(healthy_hyper.values[1] / yes *100, 0))
+
+no_per = int(round(no/(no+yes) * 100, 0))
+yes_per = int(round(yes/(no+yes)* 100, 0))
+
+
+fig = plt.figure(FigureClass = Waffle, 
+                 constrained_layout = True,
+                 figsize = (7,7),
+                 facecolor = '#f6f5f5',dpi = 100,
+                 
+                 plots = {'121':
+                          {     
+                           'rows':7,
+                           'columns': 7,
+                           'values' : [stroke_yes,healthy_yes],
+                            'colors' : ['#343bfe','#e6a129'],
+                              'vertical' : True,
+                              'interval_ratio_x': 0.005,
+                              'interval_ratio_y': 0.005,
+                              'icons' : 'heart',
+                              'icon_legend': False,
+                              'icon_size':20,
+                              'plot_anchor':'C',
+                              'alpha':0.8,
+                              'starting_location': 'NE'
+                          },
+                          
+                          '122' :
+                          { 
+                            'rows': 7,
+                            'columns':7,
+                            'values':[stroke_no,healthy_no],         
+                              'colors' : ['#343bfe','#e6a129'],
+                              'vertical': True,
+                              'interval_ratio_x': 0.005,
+                              'interval_ratio_y':0.005,
+                              'icons' : 'heart',
+                              'icon_legend' :False,
+                              'icon_size':20,
+                              'plot_anchor':'C',
+                              'alpha':0.8,
+                              'starting_location': 'NE'
+                                                      
+                           }
+                         },
+                   
+)
+
+#Generate the graph for people with stroke and without stroke in both heart disease status and save the graph
+fig.text(0., 0.85, 'Heart disease and Heart Stroke', {'font':'Serif', 'size':20, 'color':'black', 'weight':'bold'})
+fig.text(0., 0.79, 'From the graph we can see that the association between Heart disease \nand Heart Stroke is significant.', {'font':'Serif', 'size':13, 'color':'black', 'weight':'normal'}, alpha = 0.8)
+fig.text(0.24, 0.22, 'ooo', {'font':'Serif', 'size':16,'weight':'bold' ,'color':'#f6f5f5'})
+fig.text(0.65, 0.22, 'ooo', {'font':'Serif', 'size':16,'weight':'bold', 'color':'#f6f5f5'})
+fig.text(0.25, 0.27, '{}%'.format(healthy_yes), {'font':'Serif', 'size':20,'weight':'bold' ,'color':'#2c003e'},alpha = 1,)
+fig.text(0.65, 0.27, '{}%'.format(healthy_no), {'font':'Serif', 'size':20,'weight':'bold', 'color':'#2c003e'}, alpha = 1)
+fig.text(0.12, 0.68, 'UnHealthy Heart ({}%)'.format(yes_per), {'font':'Serif', 'size':16,'weight':'bold' ,'color':'black'},alpha = 0.5,)
+fig.text(0.55, 0.68, "Healthy Heart({}%)".format(no_per), {'font':'Serif', 'size':16,'weight':'bold', 'color':'black'}, alpha = 0.5)
+
+# Generate the legend for the graph
+fig.text(0.6,0.75, 'Stroke ', {'font': 'Serif','weight':'bold','Size': '16','weight':'bold','style':'normal', 'color':'#343bfe'})
+fig.text(0.72,0.75, '|', {'color':'black' , 'size':'16', 'weight': 'bold'})
+fig.text(0.74,0.75, 'No Stroke', {'font': 'Serif','weight':'bold', 'Size': '16','style':'normal', 'weight':'bold','color':'#e6a129'},alpha = 1)
+
+
+plt.savefig("Heart disease risk")
