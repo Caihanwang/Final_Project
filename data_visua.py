@@ -382,3 +382,81 @@ plt.savefig("Heart stroke and weight")
 
 
 
+
+'''Gender risk plot for heart stroke'''
+stroke_gen = dat[dat['stroke'] == 1]['gender'].value_counts()
+healthy_gen = dat[dat['stroke'] == 0]['gender'].value_counts()
+
+#get the count of each gender from the dataset
+female = dat['gender'].value_counts().values[0]
+male =  dat['gender'].value_counts().values[1]
+
+#find the number of stroke and healthy people from both genders
+stroke_female = int(round (stroke_gen.values[0] / female * 100, 0))
+stroke_male = int(round( stroke_gen.values[1] / male *100, 0))
+healthy_female = int(round(healthy_gen.values[0] / female * 100, 0))
+healthy_male = int(round(healthy_gen.values[1] / male *100, 0))
+
+female_per = int(round(female/(female+male) * 100, 0))
+male_per = int(round(male/(female+male)* 100, 0))
+
+
+fig = plt.figure(FigureClass = Waffle, 
+                 constrained_layout = True,
+                 figsize = (7,7),
+                 facecolor = '#f6f5f5',dpi = 100,
+                 
+                 plots = {'121':
+                          {     
+                           'rows':7,
+                           'columns': 7,
+                           'values' : [healthy_male,stroke_male],
+                            'colors' : ['#e6a129','#343bfe'],
+                              'vertical' : True,
+                              'interval_ratio_y': 0.1,
+                              'interval_ratio_x': 0.1,
+                              'icons' : 'male',
+                              'icon_legend': False,
+                              'icon_size':20,
+                              'plot_anchor':'C',
+                              'alpha':0.1
+                          },
+                          '122' :
+                          { 
+                            'rows': 7,
+                            'columns':7,
+                            'values':[healthy_female,stroke_female],         
+                              'colors' : ['#e6a129','#343bfe'],
+                              'vertical': True,
+                              'interval_ratio_y': 0.1,
+                              'interval_ratio_x': 0.1,
+                              'icons' : 'female',
+                              'icon_legend' :False,
+                              'icon_size':20,
+                              'plot_anchor':'C',
+                              'alpha':0.1
+                                                      
+                           }
+                         },
+                   
+)
+
+#Generate the graph for people with stroke and without stroke in both genders and save the graph
+fig.text(0., 0.9, 'Gender and Heart Stroke ', {'font':'Serif', 'size':20, 'color':'black', 'weight':'bold'})
+fig.text(0., 0.83, 'Risk rate of getting heart stroke in both gender are same,\nmen and women have the equal probability of getting heart stroke', {'font':'Serif', 'size':13, 'color':'black', 'weight':'normal'}, alpha = 0.7)
+fig.text(0.24, 0.15, 'ooo', {'font':'Serif', 'size':16,'weight':'bold' ,'color':'#f6f5f5'})
+fig.text(0.65, 0.15, 'ooo', {'font':'Serif', 'size':16,'weight':'bold', 'color':'#f6f5f5'})
+fig.text(0.23, 0.2, '{}%'.format(healthy_male), {'font':'Serif', 'size':20,'weight':'bold' ,'color':'#e6a129'},alpha = 0.7,)
+fig.text(0.65, 0.2, '{}%'.format(healthy_female), {'font':'Serif', 'size':20,'weight':'bold', 'color':'#e6a129'}, alpha = 0.7)
+fig.text(0.21, 0.78, 'Male ({}%)'.format(male_per), {'font':'Serif', 'size':14,'weight':'bold' ,'color':'black'},alpha = 0.3,)
+fig.text(0.61, 0.78, 'Female({}%)'.format(female_per), {'font':'Serif', 'size':14,'weight':'bold', 'color':'black'}, alpha = 0.3)
+
+
+fig.text(0.7,0.73, 'Stroke ', {'font': 'Serif','weight':'bold','Size': '13','weight':'bold','style':'normal', 'color':'#343bfe'})
+fig.text(0.82,0.73, '|', {'color':'black' , 'size':'13', 'weight': 'bold'})
+fig.text(0.835,0.73, 'No Stroke', {'font': 'Serif','weight':'bold', 'Size': '13','style':'normal', 'weight':'bold','color':'#e6a129'},alpha = 1)
+
+plt.tight_layout()
+plt.savefig("Gender Risk")
+
+
