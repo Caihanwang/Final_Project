@@ -5,11 +5,13 @@ Team member: Caihan Wang, Yifeng Tang, Jiajie Shen.
 We are going to create an application which could predict the stroke of patients, giving their Gender, Age, Hypertension, Heart Disease, Ever Married, Work Type, Residence Type, Avg. Glucose Level, BMI, Smoking Status.
 
 ## Plan
-For our data visualization part, we will include multiple informative graphs to illustrate the valuable information from our dataset: Percentage of people having strokes(in bar plot showing the percentage of each category), Heart stroke and age, Heart stroke and Glucose, Heart stroke and weight, Gender risk for stroke, Hypertension Risk for stroke, Heart disease for stroke. These graphs can help collaborators to understand the association between stroke and different variables. It will be very helpful for the latter project to do model prediction to predict whether a person is going to have stroke or not. 
+For our data visualization part, we will include multiple informative graphs to illustrate the valuable information from our dataset: Percentage of people having strokes(in bar plot showing the percentage), Heart stroke and age, Heart stroke and Glucose, Heart stroke and weight, Gender risk for stroke, Hypertension Risk for stroke, Heart disease for stroke, Marriage and stroke, Lifestyle and stroke, Smoking and stroke, Correlation Map of features - How closely each of the features correlated. These graphs can help collaborators to understand the association between stroke and different variables.  
 
 For our model part, We are going to choose a model from logistic regression, Random Forest, Decision tree. The model packages could be imported from sklearn. We clean and split data with test data and train data. After training model, We do the model diagnose by test data with statistical methods to find the most accurate one to adjust for our data. We save the best model and create a function with this model to predict the stroke status of patients. The input value of this function should be Gender, Age, Hypertension, Heart Disease, Ever Married, Work Type, Residence Type, Avg Glucose Level, BMI, Smoking Status. The output will be whether the patient has high probability to have stroke. Then we test the availabilty of the function. If there is no problem, we can wrap up the function with a interface.  
 
-For interface, 
+Interface plan: 
+<br>
+We are going to build a simple user_interface that could present a good experience for users when they use our small application. It should include all the avaliable input values, so that the users could select the values that could most accurately describe their status, including selection bars for categorized values and input value lines for numeric values. Moreover, adding valid ranges for numeric values would be prefer. Meanwhile, we are going to add some special things could reflect our interests, to make this small apllication more unique. 
 
 
 
@@ -31,8 +33,40 @@ At last, we created a function named 'Predict'. The input value should be a list
 
 
 ### User Interface
+The stroke prediction user-interface has three windows:
+<br>
+1. Initial-introduction window
+<br>
+2. Main window (includes input boxes)
+<br>
+3. Result window
+<br>
+Initial-introduction window includes basic information of this tool and disclaimer.
+<br>
+![截屏2021-04-28 下午10.23.38.png](https://i.loli.net/2021/04/28/VmA3QkDqBar6hj7.png)
 
+In the main window, we have many selection bars and input value boxes. Users could select the most accurate options that described their status. Also, we have set the valid range of three numeric input values:
+<br>
+1. Age: [0, 100]
+<br>
+2. Glucose_average_level:[20, 300]
+<br>
+3. BMI: (0,150]
 
+The following is a screen shot of  main window:
+![截屏2021-04-28 下午10.24.13.png](https://i.loli.net/2021/04/28/6Ocjzy5EaQCLZNH.png)
+
+<br>
+If your numeric input value is not within the valid range, there would be a message warning that.
+
+![WechatIMG131.png](https://i.loli.net/2021/04/28/5LkNmgSMo6cCQt3.png)
+
+If your numeric input values are all satisfied the requirements, there would be a message to say all input values are valid:
+
+![截屏2021-04-28 下午10.24.36.png](https://i.loli.net/2021/04/28/UP1bSQv3uzIlca8.png)
+
+Then, you will see the result:
+![截屏2021-04-28 下午10.24.46.png](https://i.loli.net/2021/04/28/S1YEsC6Ud4ciyMq.png)
 
 
 ## Instruction
