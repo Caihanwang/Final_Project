@@ -40,7 +40,8 @@ The stroke prediction user-interface has three windows:
 3. Result window
 <br>
 Initial-introduction window includes basic information of this tool and disclaimer.
-<br>
+
+
 ![截屏2021-04-28 下午10.23.38.png](https://i.loli.net/2021/04/28/VmA3QkDqBar6hj7.png)
 
 In the main window, we have many selection bars and input value boxes. Users could select the most accurate options that described their status. Also, we have set the valid range of three numeric input values:
