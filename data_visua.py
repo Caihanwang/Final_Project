@@ -180,3 +180,105 @@ fig.text(0.25,0.05,'Relationship between Heart Strokes and Age',{'font':'Serif',
 plt.tight_layout()
 plt.savefig("Heart stroke and age")
 
+
+
+
+'''Plot the Heart stroke and glucose graph'''
+fig = plt.figure(figsize = (24,10), dpi = 60)
+
+gs = fig.add_gridspec(10,24)
+gs.update(wspace = 1, hspace = 0.05)
+
+
+ax2 = fig.add_subplot(gs[0:3,0:10]) 
+ax3 = fig.add_subplot(gs[5:10, 0:10]) 
+ax1 = fig.add_subplot(gs[0:,13:]) 
+
+# setting up axes list
+axes = [ ax1,ax2, ax3]
+
+
+# setting of axes
+for ax in axes:
+    ax.axes.get_yaxis().set_visible(False)
+    ax.set_facecolor('#f6f5f5')
+    
+    for loc in ['left', 'right', 'top', 'bottom']:
+        ax.spines[loc].set_visible(False)
+
+fig.patch.set_facecolor('#f6f5f5')
+        
+ax1.axes.get_xaxis().set_visible(False)
+ax1.axes.get_yaxis().set_visible(True)
+
+
+#plot of stoke and healthy people
+
+stroke_glu = dat[dat['stroke'] == 1].glucose_cat.value_counts()
+healthy_glu = dat[dat['stroke'] == 0].glucose_cat.value_counts()
+
+ax1.hlines(y = ['Low', 'Normal', 'High', 'Very High'], xmin = [2316,1966,478,101], 
+          xmax = [89,71,71,18], color = 'grey',**{'linewidth':0.5})
+
+
+sns.scatterplot(y = stroke_glu.index, x = stroke_glu.values, s = stroke_glu.values, color = '#343bfe', ax= ax1, alpha = 1)
+sns.scatterplot(y = healthy_glu.index, x = healthy_glu.values, s = healthy_glu.values, color = '#e6a129', ax= ax1, alpha = 1)
+
+ax1.axes.get_xaxis().set_visible(False)
+ax1.set_xlim(xmin = -500, xmax = 3000)
+ax1.set_ylim(ymin = -1.5,ymax = 4.5)
+
+ax1.set_yticklabels( labels = ['Low', 'Normal', 'High', 'Very High'],fontdict = {'font':'Serif', 'fontsize':16,'fontweight':'bold', 'color':'black'})
+
+ax1.text(-1000,4.3, 'How Glucose level Impact on Heart Strokes' ,{'font': 'Serif', 'Size': '25','weight':'bold', 'color':'black'})
+ax1.text(1700,3.5, 'Stroke ', {'font': 'Serif','weight':'bold','Size': '16','weight':'bold','style':'normal', 'color':'#343bfe'})
+ax1.text(2050,3.5, '|', {'color':'black' , 'size':'16', 'weight': 'bold'})
+ax1.text(2075,3.5, 'Healthy', {'font': 'Serif','weight':'bold', 'Size': '16','style':'normal', 'weight':'bold','color':'#e6a129'})
+ax1.text(-1000,3.8, 'Glucose level does not have significant association with strokes.', 
+        {'font':'Serif', 'size':'16','color': 'black'})
+
+
+ax1.text(stroke_glu.values[0] + 30,0.05, stroke_glu.values[0], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#343bfe'})
+ax1.text(healthy_glu.values[0] + -355,0.05, healthy_glu.values[0], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#e6a129'})
+
+ax1.text(stroke_glu.values[2] + 30,1.05, stroke_glu.values[2], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#343bfe'})
+ax1.text(healthy_glu.values[2] + 1170,1.05, healthy_glu.values[2], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#e6a129'})
+
+ax1.text(stroke_glu.values[1] + 30,2.05, stroke_glu.values[1], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#343bfe'})
+ax1.text(healthy_glu.values[1] - 1450,2.05, healthy_glu.values[1], {'font':'Serif', 'Size':14, 'weight':'bold', 'color':'#e6a129'})
+
+
+
+# plotting distribution plots
+
+sns.kdeplot(data = dat, x = 'avg_glucose_level', ax = ax2, shade = True, color = '#c76a48', alpha = 1, )
+ax2.set_xlabel('Average Glucose Level', fontdict = {'font':'Serif', 'color': 'black', 'size': 16,'weight':'bold' })
+ax2.text(25,0.023,'Glucose Distribution', {'font':'Serif', 'color': 'black','weight':'bold','size':20})
+ax2.text(25,0.019, 'From the distribution plot, we see most people have similar glocose level.', 
+        {'font':'Serif', 'size':'16','color': 'black'})
+ax2.text(210,0.017, 'Total',{'font':'Serif', 'size':'14','color': '#c76a48','weight':'bold'})
+ax2.text(240,0.017, '=',{'font':'Serif', 'size':'14','color': 'black','weight':'bold'})
+ax2.text(250,0.017, 'Stroke',{'font':'Serif', 'size':'14','color': '#343bfe','weight':'bold'})
+ax2.text(280,0.017, '+',{'font':'Serif', 'size':'14','color': 'black','weight':'bold'})
+ax2.text(290,0.017, 'Healthy',{'font':'Serif', 'size':'14','color': '#e6a129','weight':'bold'})
+
+
+# distribution plots adding comments and legends
+
+
+sns.kdeplot(data = dat[dat['stroke'] == 0], x = 'avg_glucose_level',ax = ax3, shade = True,  alpha = 1, color = '#e6a129' )
+sns.kdeplot(data = dat[dat['stroke'] == 1], x = 'avg_glucose_level',ax = ax3, shade = True,  alpha = 0.8, color = '#343bfe')
+
+ax3.set_xlabel('Average Glucose Level', fontdict = {'font':'Serif', 'color': 'black', 'weight':'bold','size': 16})
+
+ax3.text(-17,0.0195,'Stroke-Glucose Distribution', {'font':'Serif', 'weight':'bold','color': 'black', 'size':20})
+ax3.text(-17,0.0176,'It is hard to determine whether glucose level effect \npeople of having strokes.', {'font':'Serif', 'color': 'black', 'size':14})
+ax3.text(240,0.0174, 'Stroke ', {'font': 'Serif','weight':'bold','Size': '16','weight':'bold','style':'normal', 'color':'#343bfe'})
+ax3.text(290,0.0174, '|', {'color':'black' , 'size':'16', 'weight': 'bold'})
+ax3.text(300,0.0174, 'Healthy', {'font': 'Serif','weight':'bold', 'Size': '16','style':'normal', 'weight':'bold','color':'#e6a129'})
+
+
+fig.text(0.2,0.03,'Assocaition between Heart Strokes and Glucose',{'font':'Serif', 'weight':'bold','color': 'black', 'size':25})
+plt.tight_layout()
+plt.savefig("Heart stroke and glutose")
+
