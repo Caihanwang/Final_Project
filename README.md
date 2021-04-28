@@ -13,6 +13,10 @@ For our model part, We are going to choose a model from logistic regression, Ran
 For interface, we are going to build a simple user_interface that could present a good experience for users when they use our small application. It should include all the avaliable input values, so that the users could select the values that could most accurately describe their status, including selection bars for categorized values and input value lines for numeric values. Moreover, adding valid ranges for numeric values would be prefer. Meanwhile, we are going to add some special things could reflect our interests, to make this small apllication more unique. 
 
 
+## Instruction
+To run the application, you should put the "healthcare-dataset-stroke-data.csv", "Model1.pkl", "Stroke_Prrediction.py", "test_Stroke_Prediction.py", "ModelSelection.py", "created.png", "Duke_Chapel.png", "duke.png", "data_visualization.py" into one folder. Also, you need install all the packages in "requirement.txt"  
+Run "Stroke_Prediction.py", the user interface will show. You can choose and fill in some data in the interface, it will output the predict result.  
+
 
 ## Architecture
 We used "healthcare-dataset-stroke-data.csv", which cited from Kaggle. We used the data to train sklearning models and predict the stroke status of patients. The whole process included data visualization, model selection, and user interface.  
@@ -111,10 +115,6 @@ If your numeric input values are all satisfied the requirements, there would be 
 Then, you will see the result:
 ![截屏2021-04-28 下午10.24.46.png](https://i.loli.net/2021/04/28/S1YEsC6Ud4ciyMq.png)
 
-
-## Instruction
-To run the application, you should put the "healthcare-dataset-stroke-data.csv", "Model1.pkl", "Stroke_Prrediction.py", "test_Stroke_Prediction.py", "ModelSelection.py", "created.png", "Duke_Chapel.png", "duke.png", "data_visualization.py" into one folder. Also, you need install all the packages in "requirement.txt"  
-Run "Stroke_Prediction.py", the user interface will show. You can choose and fill in some data in the interface, it will output the predict result.  
 
 ## Examples
 ![截屏2021-04-28 下午10.23.38.png](https://i.loli.net/2021/04/28/VmA3QkDqBar6hj7.png)
